@@ -1,0 +1,38 @@
+Below installation steps are done on ubuntu Virtualbox over windows.
+
+# Install OpenAI (visit this link to check https://gym.openai.com/docs/):
+download gym-0.9.2 only (not higher version, otherwise doom will not work)
+cd gym-0.9.2
+pip install -e . # minimal install
+
+You can later run pip install -e .[all] to do a full install (this requires cmake and a recent pip version). 
+
+
+# Install the full set of environments (https://github.com/openai/gym#installing-everything):
+Linux (or Windows with Ubuntu):
+apt-get install -y python-numpy python-dev cmake zlib1g-dev libjpeg-dev xvfb libav-tools xorg-dev python-opengl libboost-all-dev libsdl2-dev swig
+pip install -e '.[all]'
+
+
+# Install ppaquette to visualize Doom (https://github.com/ppaquette/gym-doom/blob/master/README.md):
+
+pip install ppaquette-gym-doom 
+
+
+# Install ffmpeg to get the videos in a folder (https://anaconda.org/conda-forge/ffmpeg):
+
+conda install -c conda-forge ffmpeg=3.2.4 
+
+
+
+Very Important Note:
+After gym and ppaquette-gym-doom installation, Launch spyder and import the below thing:
+import ppaquette_gym_doom
+
+it will give you below error:
+from gym.scoreboard.registration import add_task, add_group
+ImportError: No module named 'gym.scoreboard.registration'
+
+To resolve this issue : install gym-0.9.2 only , because gym.scoreboard.registration is not present in versions above gym-0.9.2
+
+
